@@ -12,6 +12,8 @@ public class PetService {
     private PetRepository petRepository;
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Transactional
     public Pet savePet(Pet pet, Long ownerId) {
         Customer customer = customerRepository.getOne(ownerId);
         pet.setOwner(customer);
