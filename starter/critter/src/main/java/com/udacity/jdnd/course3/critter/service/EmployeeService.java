@@ -19,6 +19,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Transactional
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
@@ -39,6 +40,7 @@ public class EmployeeService {
         return employeeRepository.findAllBySkillsIn(skills);
     }
 
+    @Transactional
     public void setAvailability(Set<DayOfWeek> daysAvailable, Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).orElse(null);
         if (employee != null) {
