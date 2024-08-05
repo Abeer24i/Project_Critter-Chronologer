@@ -32,6 +32,7 @@ public class ScheduleService {
     private CustomerRepository customerRepository;
 
 
+    @Transactional
     public Schedule saveSchedule(Schedule schedule) {
         return scheduleRepository.save(schedule);
     }
@@ -56,6 +57,7 @@ public class ScheduleService {
         return null;
     }
 
+    @Transactional
     public Schedule createSchedule(List<Long> employeeIds, List<Long> petIds, Schedule schedule) {
         List<Employee> employees = employeeRepository.findAllById(employeeIds);
         List<Pet> pets = petRepository.findAllById(petIds);
