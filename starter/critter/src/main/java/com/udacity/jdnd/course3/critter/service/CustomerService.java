@@ -18,6 +18,7 @@ public class CustomerService {
     @Autowired
     private PetRepository petRepository;
 
+    @Transactional
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
@@ -30,6 +31,7 @@ public class CustomerService {
         return customerRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public Customer getCustomerByPet(Long petId) {
         Pet pet = petRepository.findById(petId).orElse(null);
         if (pet != null && pet.getOwner() != null) {
